@@ -1,0 +1,13 @@
+#!/bin/bash
+
+export CONCOURSE_WORK_DIR="{{pkg.svc_data_path}}"
+export CONCOURSE_SESSION_SIGNING_KEY="{{pkg.svc_files_path}}/session_signing_key"
+export CONCOURSE_TSA_HOST_KEY="{{pkg.svc_files_path}}/tsa_host_key"
+export CONCOURSE_TSA_AUTHORIZED_KEYS="{{pkg.svc_files_path}}/authorized_worker_keys"
+{{#if bind.atc ~}}
+{{#with bind.atc.first as |atc| }}
+export CONCOURSE_TSA_HOST="http://{{atc.sys.ip}}:{{atc.cfg.tsa_port}}"
+{{~/with}}
+{{else ~}}
+export CONCOURSE_TSA_HOST="{{cfg.tsa.host}}:{{cfg.tsa.port}}"
+{{/if ~}}
