@@ -1,8 +1,9 @@
 #!/bin/bash
 
-export CONCOURSE_WORK_DIR="{{pkg.svc_data_path}}"
+export CONCOURSE_WORK_DIR="{{cfg.work_dir}}"
 export CONCOURSE_TSA_WORKER_PRIVATE_KEY="{{pkg.svc_files_path}}/worker_key"
 export CONCOURSE_TSA_PUBLIC_KEY="{{pkg.svc_files_path}}/tsa_host_key.pub"
+export CONCOURSE_BAGGAGECLAIM_DRIVER="btrfs"
 {{#if bind.atc ~}}
 {{#with bind.atc.first as |atc| }}
 export CONCOURSE_TSA_HOST="http://{{atc.sys.ip}}:{{atc.cfg.tsa_port}}"

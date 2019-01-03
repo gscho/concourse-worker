@@ -1,7 +1,12 @@
-#!/bin/bash -xe
-#
+#!{{pkgPathFor "core/bash"}} -xe
+
 exec 2>&1
 
+mkdir -p "{{cfg.work_dir}}"
 source "{{pkg.svc_config_path}}/worker_environment"
 
-exec concourse worker
+if [ ! -e "{{pkg.svc_path}}/CONCOURSE_WORKER_NAME" ]; then
+  echo "${HOSTNAME}-$(date +%s)" > "{{pkg.svc_path}}/CONCOURSE_WORKER_NAME"
+fi
+
+exec concourse worker --name $(cat "{{pkg.svc_path}}/CONCOURSE_WORKER_NAME")
