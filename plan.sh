@@ -5,7 +5,7 @@ pkg_maintainer="The Habitat Maintainers <humans@habitat.sh>"
 pkg_license=('Apache-2.0')
 pkg_description="CI that scales with your project"
 pkg_upstream_url="https://concourse.ci"
-pkg_deps=(core/concourse/4.2.1 core/bash core/coreutils)
+pkg_deps=(core/concourse/4.2.1 core/coreutils)
 pkg_binds_optional=(
    [atc]="tsa_port"
 )

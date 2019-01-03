@@ -1,4 +1,4 @@
-#!{{pkgPathFor "core/bash"}} -xe
+#!/bin/sh
 
 exec 2>&1
 
@@ -9,4 +9,5 @@ if [ ! -e "{{pkg.svc_path}}/CONCOURSE_WORKER_NAME" ]; then
   echo "${HOSTNAME}-$(date +%s)" > "{{pkg.svc_path}}/CONCOURSE_WORKER_NAME"
 fi
 
+export PATH=/bin:/usr/bin:/usr/local/bin:/sbin:$PATH
 exec concourse worker --name $(cat "{{pkg.svc_path}}/CONCOURSE_WORKER_NAME")

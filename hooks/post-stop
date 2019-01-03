@@ -1,5 +1,5 @@
-#!{{pkgPathFor "core/bash"}} -xe
-#
+#!/bin/sh
+
 exec 2>&1
 
 # Retire the worker to gracefully kill the service
