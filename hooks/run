@@ -6,7 +6,7 @@ mkdir -p "{{cfg.work_dir}}"
 source "{{pkg.svc_config_path}}/worker_environment"
 
 if [ ! -e "{{pkg.svc_path}}/CONCOURSE_WORKER_NAME" ]; then
-  echo "${HOSTNAME}-$(date +%s)" > "{{pkg.svc_path}}/CONCOURSE_WORKER_NAME"
+  echo "{{sys.hostname}}-$(date +%s)" > "{{pkg.svc_path}}/CONCOURSE_WORKER_NAME"
 fi
 
 export PATH=/bin:/usr/bin:/usr/local/bin:/sbin:$PATH
