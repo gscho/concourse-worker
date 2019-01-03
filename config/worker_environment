@@ -6,7 +6,7 @@ export CONCOURSE_TSA_PUBLIC_KEY="{{pkg.svc_files_path}}/tsa_host_key.pub"
 export CONCOURSE_BAGGAGECLAIM_DRIVER="btrfs"
 {{#if bind.atc ~}}
 {{#with bind.atc.first as |atc| }}
-export CONCOURSE_TSA_HOST="http://{{atc.sys.ip}}:{{atc.cfg.tsa_port}}"
+export CONCOURSE_TSA_HOST="{{atc.sys.ip}}:{{atc.cfg.tsa_port}}"
 {{~/with}}
 {{else ~}}
 export CONCOURSE_TSA_HOST="{{cfg.tsa.host}}:{{cfg.tsa.port}}"

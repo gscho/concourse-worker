@@ -1,9 +1,10 @@
-#!/bin/sh
+#!/bin/bash
 
 exec 2>&1
+
+source "{{pkg.svc_config_path}}/worker_environment"
 
 # Retire the worker to gracefully kill the service
 worker=$(cat "{{pkg.svc_path}}/CONCOURSE_WORKER_NAME")
 rm -f "{{pkg.svc_path}}/CONCOURSE_WORKER_NAME"
 exec concourse retire-worker --name $worker
-
